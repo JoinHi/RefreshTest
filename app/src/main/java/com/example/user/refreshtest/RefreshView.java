@@ -23,19 +23,28 @@ public class RefreshView extends ViewGroup {
 
     public RefreshView(Context context) {
         super(context);
+        initViews();
     }
+
+
 
     public RefreshView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initViews();
     }
 
     public RefreshView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initViews();
+    }
+
+    private void initViews() {
+
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
+        mContentView.layout(l,t,r,b);
     }
 
     @Override
@@ -105,8 +114,18 @@ public class RefreshView extends ViewGroup {
             to = 0;
         }
 
+        int change = to - currentPosY;
         currentPosY =  to;
-        int change =
+        updatePos(change);
+    }
+
+    private void updatePos(int change) {
+        if (change == 0) return;
+        mHeaderView.offsetTopAndBottom(change);
+//        if (!isPinContent()) {
+            mContentView.offsetTopAndBottom(change);
+//        }
+        invalidate();
     }
 
     /**
