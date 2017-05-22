@@ -1,5 +1,6 @@
 package com.example.user.refreshtest;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -33,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
         }
         TextView textView = new TextView(this);
         textView.setText("hahah");
+        textView.setTextColor(Color.RED);
         textView.setPadding(0,100,0,0);
+        textView.setBackgroundColor(Color.WHITE);
         mRefreshView.setHeader(textView);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1);
         arrayAdapter.addAll(list);
